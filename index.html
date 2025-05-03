@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KodeKshetra - Launching Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* Modern CSS Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Variables */
+        :root {
+            --primary: #6c63ff;
+            --secondary: #4a45b3;
+            --dark: #1e1b4b;
+            --light: #f8f9ff;
+            --accent: #ff6b6b;
+            --success: #2ecc71;
+            --gradient: linear-gradient(135deg, #6c63ff, #4a45b3);
+            --shadow: 0 4px 20px rgba(108, 99, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 24px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 60px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .tagline {
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease-out 0.2s forwards;
+        }
+
+        h1 {
+            font-size: 54px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease-out 0.4s forwards;
+        }
+
+        h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .description {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 600px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease-out 0.6s forwards;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease-out 0.8s forwards;
+        }
+
+        .feature {
+            padding: 24px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            background: var(--gradient);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        /* Form */
+        .notify-form {
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease-out 1s forwards;
+        }
+
+        .form-group {
+            display: flex;
+            gap: 16px;
+            max-width: 500px;
+        }
+
+        input[type="email"] {
+            flex: 1;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 2px solid #e0e0ff;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="email"]:focus {
+            border-color: var(--primary);
+        }
+
+        .btn {
+            padding: 16px 28px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(108, 99, 255, 0.3);
+        }
+
+        /* Code Block Animation */
+        .code-block {
+            width: 90%;
+            max-width: 480px;
+            height: 380px;
+            background: #1e1a3e;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 30px rgba(30, 27, 75, 0.3);
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out 1.2s forwards;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: #e0e0ff;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .code-header {
+            display: flex;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .code-tab {
+            padding: 4px 10px;
+            border-radius: 4px 4px 0 0;
+            background: rgba(108, 99, 255, 0.2);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .code-tab.active {
+            background: rgba(108, 99, 255, 0.5);
+        }
+
+        .code-content {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .code-line {
+            margin-bottom: 10px;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: codeFadeIn 0.5s ease-out forwards;
+        }
+
+        .code-line:nth-child(1) { animation-delay: 1.4s; }
+        .code-line:nth-child(2) { animation-delay: 1.6s; }
+        .code-line:nth-child(3) { animation-delay: 1.8s; }
+        .code-line:nth-child(4) { animation-delay: 2.0s; }
+        .code-line:nth-child(5) { animation-delay: 2.2s; }
+        .code-line:nth-child(6) { animation-delay: 2.4s; }
+        .code-line:nth-child(7) { animation-delay: 2.6s; }
+        .code-line:nth-child(8) { animation-delay: 2.8s; }
+        .code-line:nth-child(9) { animation-delay: 3.0s; }
+        .code-line:nth-child(10) { animation-delay: 3.2s; }
+        .code-line:nth-child(11) { animation-delay: 3.4s; }
+
+        .line-number {
+            color: rgba(255, 255, 255, 0.3);
+            margin-right: 12px;
+            min-width: 24px;
+            text-align: right;
+            user-select: none;
+        }
+
+        .keyword {
+            color: #ff79c6;
+        }
+
+        .function {
+            color: #8be9fd;
+        }
+
+        .string {
+            color: #f1fa8c;
+        }
+
+        .number {
+            color: #bd93f9;
+        }
+
+        .comment {
+            color: #6272a4;
+        }
+
+        .variable {
+            color: #50fa7b;
+        }
+
+        .operator {
+            color: #ff79c6;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--primary);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        @keyframes codeFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .code-line:nth-child(2)::before { animation-delay: 0.2s; }
+        .code-line:nth-child(3)::before { animation-delay: 0.4s; }
+        .code-line:nth-child(4)::before { animation-delay: 0.6s; }
+        .code-line:nth-child(5)::before { animation-delay: 0.8s; }
+        .code-line:nth-child(6)::before { animation-delay: 1.0s; }
+        .code-line:nth-child(7)::before { animation-delay: 1.2s; }
+        .code-line:nth-child(8)::before { animation-delay: 1.4s; }
+
+        .shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        .shape-1 {
+            background: var(--primary);
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -150px;
+            filter: blur(60px);
+        }
+
+        .shape-2 {
+            background: var(--accent);
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: 10%;
+            filter: blur(50px);
+        }
+
+        .countdown {
+            display: flex;
+            gap: 20px;
+            margin-top: 32px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease-out 1.4s forwards;
+        }
+
+        .countdown-item {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            min-width: 80px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .countdown-item span {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .countdown-item p {
+            font-size: 14px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 42px;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+            }
+            
+            .form-group {
+                margin: 0 auto;
+            }
+            
+            .description {
+                margin: 0 auto 40px;
+            }
+            
+            .countdown {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-img">K</div>
+                <div class="logo-text">KodeKshetra</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="tagline">Coming Soon</p>
+                <h1>Master DSA with <span>KodeKshetra</span></h1>
+                <p class="description">Revolutionizing the way you learn and practice Data Structures & Algorithms with personalized AI-powered guidance. Get ready for the ultimate coding practice experience.</p>
+                
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <span id="days">30</span>
+                        <p>Days</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours">24</span>
+                        <p>Hours</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes">60</span>
+                        <p>Minutes</p>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds">60</span>
+                        <p>Seconds</p>
+                    </div>
+                </div>
+                
+                <div class="notify-form">
+                  <form id="email-form" action="https://formsubmit.co/suparking7895@gmail.com" method="POST">
+                    <!-- Optional hidden inputs for settings -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+                    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+                
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn">Notify Me</button>
+                    </div>
+                </form>
+                    <p id="form-message" style="margin-top: 16px; font-weight: 500;"></p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">💡</div>
+                        <h3>AI-Powered Practice</h3>
+                        <p>Smart problem recommendations based on your skill level and learning style.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Interactive Solutions</h3>
+                        <p>Step-by-step guidance with dynamic explanations tailored to your needs.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <h3>Progress Tracking</h3>
+                        <p>Visualize your improvement and identify areas for growth.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🏢</div>
+                        <h3>Organization Questions</h3>
+                        <p>Organizations can upload their own custom DSA problems for team practice and interviews.</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="hero-image">
+                <div class="code-block">
+                    <div class="code-header">
+                        <div class="code-tab active">mergeSort.js</div>
+                    </div>
+                    <div class="code-content">
+                        <div class="code-line">
+                            <span class="line-number">1</span>
+                            <span class="comment">// Merge Sort Implementation - KodeKshetra</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">2</span>
+                            <span class="keyword">function</span> <span class="function">mergeSort</span>(arr) {
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">3</span>
+                            <span>&nbsp;&nbsp;</span><span class="keyword">if</span> (arr.length <= <span class="number">1</span>) <span class="keyword">return</span> arr;
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">4</span>
+                            <span>&nbsp;&nbsp;</span><span class="keyword">const</span> <span class="variable">mid</span> = Math.<span class="function">floor</span>(arr.length / <span class="number">2</span>);
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">5</span>
+                            <span>&nbsp;&nbsp;</span><span class="keyword">const</span> <span class="variable">left</span> = <span class="function">mergeSort</span>(arr.<span class="function">slice</span>(<span class="number">0</span>, mid));
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">6</span>
+                            <span>&nbsp;&nbsp;</span><span class="keyword">const</span> <span class="variable">right</span> = <span class="function">mergeSort</span>(arr.<span class="function">slice</span>(mid));
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">7</span>
+                            <span>&nbsp;&nbsp;</span><span class="keyword">return</span> <span class="function">merge</span>(left, right);
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">8</span>
+                            }
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">9</span>
+                            <span class="keyword">function</span> <span class="function">merge</span>(left, right) {
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">10</span>
+                            <span>&nbsp;&nbsp;</span><span class="keyword">let</span> <span class="variable">result</span> = [], <span class="variable">i</span> = <span class="number">0</span>, <span class="variable">j</span> = <span class="number">0</span>;
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">11</span>
+                            <span>&nbsp;&nbsp;</span><span class="comment">// Continue merging arrays...</span><span class="cursor"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <section id="contact">
+      <h2 style="display: flex; justify-content: center;">Contact</h2>
+<!-- Social Media Icons -->
+<div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;"">
+  <!-- GitHub -->
+  <a href="https://github.com/Suprabhat3" target="_blank" aria-label="GitHub">
+    <i class="fab fa-github fa-2x"></i>
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://linkedin.com/in/suprabhatt" target="_blank" aria-label="LinkedIn">
+    <i class="fab fa-linkedin fa-2x"></i>
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://instagram.com/suprabhat_95" target="_blank" aria-label="Instagram">
+    <i class="fab fa-instagram fa-2x"></i>
+  </a>
+
+  <!-- X (Twitter) -->
+  <a href="https://x.com/Suprabhat_3" target="_blank" aria-label="X (Twitter)">
+    <i class="fab fa-x-twitter fa-2x"></i>
+  </a>
+
+  <!-- Gmail -->
+  <a href="mailto:sdk26150@gamil.com" aria-label="Gmail">
+    <i class="fas fa-envelope fa-2x"></i>
+  </a>
+</div>
+
+  </section>
+
+    <script>
+        // Countdown Timer
+        const countdownDate = new Date();
+        countdownDate.setDate(countdownDate.getDate() + 30); // Launch in 30 days
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Email form submission
+        function submitForm(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const messageElement = document.getElementById("form-message");
+            
+            // Simulate form submission
+            messageElement.style.color = "var(--success)";
+            messageElement.innerText = "Thank you! We'll notify you when we launch.";
+            document.getElementById("email").value = "";
+            
+            return false;
+        }
+    </script>
+</body>
+</html>
