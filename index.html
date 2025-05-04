@@ -537,17 +537,12 @@
                 </div>
                 
                 <div class="notify-form">
-                  <form id="email-form" action="https://formsubmit.co/suparking7895@gmail.com" method="POST">
-                    <!-- Optional hidden inputs for settings -->
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="box">
-                    <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
-                
-                    <div class="form-group">
-                        <input type="email" name="email" id="email" placeholder="Enter your email address" required>
-                        <button type="submit" class="btn">Notify Me</button>
-                    </div>
-                </form>
+                 <form id="email-form" onsubmit="return submitForm(event)">
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn">Notify Me</button>
+                        </div>
+                    </form>
                     <p id="form-message" style="margin-top: 16px; font-weight: 500;"></p>
                 </div>
                 
